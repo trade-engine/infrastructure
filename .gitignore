@@ -1,2 +1,5 @@
 # IntelliJ IDEA
 .idea
+
+# Project specific
+.env

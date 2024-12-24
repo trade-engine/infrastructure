@@ -122,6 +122,18 @@ services:
     volumes:
       - broker-3-data:/var/lib/kafka/data
 
+  polygon-tickers-connector:
+    image: ghcr.io/trade-engine/polygon-tickers-connector@sha256:25ca609e9234c8c6ad233032b4a079fa7d5fa0d6449903ea1d543b7aac782096
+    restart: always
+    env_file:
+      - .env
+    environment:
+      KAFKA_BROKERS: 'kafka-broker-1:19092,kafka-broker-2:19092,kafka-broker-3:19092'
+    depends_on:
+      - kafka-broker-1
+      - kafka-broker-2
+      - kafka-broker-3
+
 volumes:
   controller-1-data:
   controller-2-data:
